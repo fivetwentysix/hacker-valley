@@ -1,7 +1,18 @@
 import { Component } from '@angular/core';
+import { GameService } from './game.service';
 @Component({
-  selector: 'my-app',
-  template: '<h1>Welcome to Hacker Valley</h1>'
+  providers: [GameService],
+  selector: 'hacker-valley',
+  template: `
+  <md-toolbar>Hacker Valley</md-toolbar>
+  <md-card>
+  <b>Time</b>: <game-time [days]=game.days [hours]=game.hours></game-time>
+  </md-card>
+  `
 })
-export class AppComponent { }
+export class AppComponent { 
+  constructor(private game: GameService) {
+    this.game.start();
+  }
+}
 
