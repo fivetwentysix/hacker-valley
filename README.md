@@ -6,9 +6,9 @@ a sim game written in Angular2/TypeScript
 
 1. Install Node & NPM. Get Node Version Manager:
 
-   Linux & OSX [nvm](https://github.com/creationix/nvm)
+   [Linux & OSX users: nvm](https://github.com/creationix/nvm)
    
-   Windows [nvm-windows](https://github.com/coreybutler/nvm-windows)
+   [Windows users:nvm-windows](https://github.com/coreybutler/nvm-windows)
    
 2. `git clone git@github.com:fivetwentysix/hacker-valley.git`
 
