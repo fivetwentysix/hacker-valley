@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 const chance = require('node_modules/chance/dist/chance.min.js')();
+const faker = require('node_modules/faker/build/build/faker.js');
 
 const JOBS = [
   'Software Engineer',
@@ -9,9 +10,42 @@ const JOBS = [
   'Business Administration'
 ];
 
+const INDUSTRIES = [
+  'Marketing',
+  'Sales',
+  'Advertising',
+  'Social Media',
+  'Graphics & Design',
+  'Business Administration',
+  'Communications',
+  'Education'
+];
+
+class Product {
+  industry: string;
+
+  constructor() {
+    this.industry = chance.pickone(INDUSTRIES);
+  }
+}
+
+class Company {
+  name: string;
+  networth: number;
+  products: Product[];
+  staff: Npc[];
+
+  constructor() {
+    this.name = faker.company.companyName();
+    this.networth = 0;
+    this.products = [new Product()];
+  }
+}
+
 class Npc {
   name: string;
-  job: string;
+  jobs: any[];
+  level: number;
 
   constructor() {
     this.name = chance.name();
@@ -24,17 +58,23 @@ class Npc {
 
 @Injectable()
 export class GameService {
-  currentTick: int;
-  days: int;
-  hours: int;
-  staff: Npc[];
+  currentTick: number;
+  days: number;
+  hours: number;
+  companies: Company[];
+  character: Npc;
 
   constructor() {
     this.currentTick = 0;
     this.days = 0;
     this.hours = 0;
     this.started = false;
-    this.staff = [new Npc()];
+    this.character = new Npc();
+    this.companies = [];
+
+    for (var _i = 0; _i < 50; _i++) {
+      this.companies.push(new Company());
+    }
   }
 
   start(): void {

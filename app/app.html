@@ -1,0 +1,38 @@
+<md-toolbar>Hacker Valley</md-toolbar>
+
+<md-card>
+  <b>Time</b>:
+  <game-time [days]=game.days [hours]=game.hours>
+  </game-time>
+</md-card>
+
+<md-tab-group>
+  <md-tab>
+    <template md-tab-label>Office</template>
+    <template md-tab-content>
+      <md-card *ngFor="let product of game.product">
+        <md-card-title>{{product.industry}}</md-card-title>
+      </md-card>
+
+      <md-card>
+        <md-card-title>{{game.character.name}}</md-card-title>
+        <md-card-subtitle>
+          <span *ngFor="let job of game.character.jobs">
+            Level {{job.level}} {{job.job}}
+          </span>
+        </md-card-subtitle>
+      </md-card>
+    </template>
+  </md-tab>
+  <md-tab>
+    <template md-tab-label>Companies</template>
+    <template md-tab-content>
+      <md-card *ngFor="let company of game.companies">
+        <md-card-title>{{company.name}}</md-card-title>
+        <md-card-subtitle>
+          Networth: {{company.networth | currency}}
+        </md-card-subtitle>
+      </md-card>
+    </template>
+  </md-tab>
+</md-tab-group>
