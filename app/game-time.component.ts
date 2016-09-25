@@ -5,8 +5,8 @@ import { Component, Input } from '@angular/core';
 })
 export class GameTimeComponent {
   @Input()
-  days: int;
+  days: number;
 
   @Input()
-  hours: int;
+  hours: number;
 }

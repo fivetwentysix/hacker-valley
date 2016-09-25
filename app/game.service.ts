@@ -63,6 +63,7 @@ export class GameService {
   hours: number;
   companies: Company[];
   character: Npc;
+  started: boolean;
 
   constructor() {
     this.currentTick = 0;
