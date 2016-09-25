@@ -4,9 +4,11 @@ a sim game written in Angular2/TypeScript
 
 ## Getting Started for Developers
 
-1. Install Node & NPM.
+1. Install Node & NPM. Get Node Version Manager:
 
-   I'm a fan of (nvm)[https://github.com/creationix/nvm]
+   Linux & OSX (nvm)[https://github.com/creationix/nvm]
+   
+   Windows (nvm-windows)[https://github.com/coreybutler/nvm-windows]
    
 2. `git clone git@github.com:fivetwentysix/hacker-valley.git`
 
