@@ -8,6 +8,15 @@
 
 <md-tab-group>
   <md-tab>
+    <template md-tab-label>Area</template>
+    <template md-tab-content>
+      <svg viewBox="0 0 100 100" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
+        <circle cx="1" cy="1" r="1"/>
+      </svg>
+    </template>
+  </md-tab>
+  <md-tab>
     <template md-tab-label>Office</template>
     <template md-tab-content>
       <md-card *ngFor="let product of game.product">
@@ -26,6 +35,7 @@
         </md-card-subtitle>
 
         Energy: {{game.character.energy}}
+        <md-progress-bar mode="determinate" [value]="game.character.energy"></md-progress-bar>
       </md-card>
     </template>
   </md-tab>

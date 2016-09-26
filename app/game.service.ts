@@ -119,13 +119,12 @@ export class GameService {
   hours: number;
   companies: Company[];
   character: Npc;
-  started: boolean;
+  ticker: number;
 
   constructor() {
     this.currentTick = 0;
     this.days = 0;
     this.hours = 0;
-    this.started = false;
     this.character = new Npc();
     this.companies = [];
 
@@ -135,8 +134,11 @@ export class GameService {
   }
 
   start(): void {
-    this.started = true;
-    setInterval(this.tick.bind(this), 300);
+    this.ticker = setInterval(this.tick.bind(this), 300);
+  }
+
+  pause(): void {
+    clearInterval(this.ticker);
   }
 
   tick(): void {

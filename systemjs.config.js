@@ -26,6 +26,7 @@
       '@angular2-material/button/button': 'npm:@angular2-material/button/button.umd.js',
       '@angular2-material/card/card': 'npm:@angular2-material/card/card.umd.js',
       '@angular2-material/tabs/tabs': 'npm:@angular2-material/tabs/tabs.umd.js',
+      '@angular2-material/progress-bar/progress-bar': 'npm:@angular2-material/progress-bar/progress-bar.umd.js',
       // other libraries
       'rxjs':                       'npm:rxjs',
       'chance':                       'npm:chance/chance.js',
@@ -48,4 +49,3 @@
     }
   });
 })(this);
-
