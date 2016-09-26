@@ -15,7 +15,10 @@
       </md-card>
 
       <md-card>
-        <md-card-title>{{game.character.name}}</md-card-title>
+        <md-card-title>
+          {{game.character.name}}
+          <small *ngIf="game.character.resting">zzz</small>
+        </md-card-title>
         <md-card-subtitle>
           <span *ngFor="let job of game.character.jobs">
             Level {{job.level}} {{job.job}}
