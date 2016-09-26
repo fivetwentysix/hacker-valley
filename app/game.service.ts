@@ -46,6 +46,8 @@ class Npc {
   name: string;
   jobs: any[];
   level: number;
+  energy: number;
+  resting: boolean;
 
   constructor() {
     this.name = chance.name();
@@ -53,6 +55,60 @@ class Npc {
     this.jobs = JOBS.map((job) => {
       return { job, level: 1 }
     });
+
+    this.energy = 100;
+  }
+
+  tick(): void {
+    this.determineNeed().then((need) => {
+      switch (need) {
+        case 'work':
+          this.work();
+          break;
+        case 'sleep':
+          this.rest();
+          break;
+      }
+    });
+  }
+
+  determineNeed(): Promise<string> {
+    return new Promise((resolve) => {
+      if (this.resting || this.needsSleep()) {
+        return resolve('sleep');
+      } else {
+        return resolve('work')
+      }
+    });
+  }
+
+  needsSleep(): boolean {
+    return this.energy < 20;
+  }
+
+  work(): Promise<number> {
+    return new Promise((resolve) => {
+      let energyCost = 10;
+      this.energy -= energyCost;
+      resolve(this.energy);
+    });
+  }
+
+  rest(): Promise<number> {
+    return new Promise((resolve) => {
+      let energyGain = 10;
+      this.energy += energyGain;
+      this.resting = !this.energyIsFull();
+      resolve(this.energy);
+    });
+  }
+
+  energyIsFull(): boolean {
+    return this.energy === 100;
+  }
+
+  currentNeed(): string {
+    return 'money';
   }
 }
 
@@ -80,10 +136,11 @@ export class GameService {
 
   start(): void {
     this.started = true;
-    setInterval(this.tick.bind(this), 1000);
+    setInterval(this.tick.bind(this), 300);
   }
 
   tick(): void {
+    this.character.tick();
     this.currentTick++;
     this.setTime();
   }
